@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Expenses</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/viewExpenses.css">
+    <script>
+        function toggleForm() {
+            const form = document.getElementById('expense-form');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="text">View Expenses</div>
+
+        <!-- Add Expenses Button -->
+        <div class="buttons">
+            <button class="btn add-expense" onclick="toggleForm()">Add Expenses</button>
+        </div>
+
+        <!-- Form to Add Expenses (hidden by default) -->
+        <div id="expense-form" class="expense-form" style="display: none;">
+            <form action="/addExpense" method="POST">
+                <div class="form-group">
+                    <label for="expenseAmount">Expense Amount (UGX):</label>
+                    <input type="number" id="expenseAmount" name="expenseAmount" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="revenueAmount">Revenue Amount (UGX):</label>
+                    <input type="number" id="revenueAmount" name="revenueAmount" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes:</label>
+                    <input type="text" id="notes" name="notes">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <button type="submit" class="btn submit-expense">Submit Expense</button>
+            </form>
+        </div>
+
+        <table class="expense-table">
+            <thead>
+                <tr>
+                    <th>Expense Amount</th>
+                    <th>Revenue Amount</th>
+                    <th>Net Income</th>
+                    <th>Category</th>
+                    <th>Notes</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% expenses.forEach(expense => { %>
+                <tr>
+                    <td>UGX <%= expense.expenseAmount %></td>
+                    <td>UGX <%= expense.revenueAmount %></td>
+                    <td>UGX <%= expense.revenueAmount - expense.expenseAmount %></td> <!-- Net Income calculated -->
+                    <td><%= expense.category %></td>
+                    <td><%= expense.notes %></td>
+                    <td><%= expense.date %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

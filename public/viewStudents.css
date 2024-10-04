@@ -1,0 +1,104 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #151515;
+  color: #c7c7c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 80%;
+  max-width: 1000px;
+  background-color: #1b1b1b;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.text {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Button Styles */
+.buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #339933;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #267c27;
+}
+
+/* Table Styles */
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.student-table th, .student-table td {
+  border: 1px solid #444;
+  padding: 12px;
+  text-align: left;
+}
+
+.student-table th {
+  background-color: #2b2b2b;
+}
+
+.student-table td {
+  background-color: #1b1b1b;
+}
+
+.student-table tr:hover {
+  background-color: #2b2b2b;
+}
+
+.student-table input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #444;
+  color: #fff;
+}
+
+/* Container Responsiveness */
+@media (max-width: 768px) {
+  .container {
+      padding: 20px;
+  }
+
+  .student-table th, .student-table td {
+      padding: 8px;
+  }
+
+  .student-table input {
+      padding: 6px;
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="text">
+            Dashboard Overview
+        </div>
+
+        <div class="filters">
+            <label for="time-period">Select Time Period:</label>
+            <select id="time-period">
+                <option value="monthly">Monthly</option>
+                <option value="last_28_days">Last 28 Days</option>
+                <option value="last_7_days">Last 7 Days</option>
+            </select>
+        </div>
+
+        <div class="overview">
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <p><strong>UGX</strong><span id="total-expenses">0</span></p>
+            </div>
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p><strong>UGX</strong><span id="total-revenue">0</span></p>
+            </div>
+            <div class="card">
+                <h3>Total Subscriptions</h3>
+                <p><span id="total-subscriptions">0</span></p>
+            </div>
+            <div class="card">
+                <h3>Net Income</h3>
+                <p><strong>UGX</strong><span id="net-income">0</span></p>
+            </div>
+        </div>
+
+        <div class="buttons">
+              <a href="/viewExpenses">
+                <button class="btn add-expense">View Expenses</button>
+            </a>
+            <a href="/manageSubscriptions">
+                <button class="btn manage-subscriptions">Manage Subscriptions</button>
+            </a>
+            <a href="/viewStudents">
+              <button class="btn view-students">View Students</button>
+          </a>
+          <a href="/reports">
+            <button class="btn reports">Reports</button>
+        </a>
+        </div>
+    </div>
+</body>
+</html>

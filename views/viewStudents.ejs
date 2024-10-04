@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Students</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/viewStudents.css">
+    <script>
+        // Function to add a new row for student
+        function addStudentRow() {
+            const tableBody = document.querySelector('.student-table tbody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <form method="POST" action="/addStudent">
+                    <td><input type="text" name="student_name" placeholder="Student Name" required /></td>
+                    <td><input type="text" name="student_number" placeholder="Student Number" required /></td>
+                    <td><input type="email" name="email" placeholder="Email" required /></td>
+                    <td><input type="text" name="contact_number" placeholder="Contact Number" required /></td>
+                </form>
+            `;
+            tableBody.appendChild(newRow);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="text">View Students</div>
+
+        <!-- Button to Add New Row -->
+        <div class="buttons">
+            <button class="btn add-row-btn" onclick="addStudentRow()">Add Student</button>
+        </div>
+
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student Number</th>
+                    <th>Email</th>
+                    <th>Contact Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% students.forEach(student => { %>
+                <tr>
+                    <form method="POST" action="/editStudent/<%= student.id %>">
+                        <td><input type="text" name="student_name" value="<%= student.student_name %>" required /></td>
+                        <td><input type="text" name="student_number" value="<%= student.student_number %>" required /></td>
+                        <td><input type="email" name="email" value="<%= student.email %>" required /></td>
+                        <td><input type="text" name="contact_number" value="<%= student.contact_number %>" required /></td>
+                    </form>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

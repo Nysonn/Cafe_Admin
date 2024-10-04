@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Subscriptions</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/manageSubscriptions.css">
+    <script>
+        // Function to add a new row for subscription
+        function addSubscriptionRow() {
+            const tableBody = document.querySelector('.subscription-table tbody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <form method="POST" action="/addSubscription">
+                    <td><input type="text" name="student_name" placeholder="Student Name" required /></td>
+                    <td><input type="text" name="package_name" placeholder="Package Name" required /></td>
+                    <td><input type="text" name="package_type" placeholder="Package Type" required /></td>
+                    <td><input type="date" name="start_date" required /></td>
+                    <td><input type="date" name="end_date" required /></td>
+                    <td><input type="text" name="installment" placeholder="Installment" required /></td>
+                    <td><input type="text" name="amount_paid" placeholder="Amount Paid" required /></td>
+                    <td>
+                        <select name="payment_status" required>
+                            <option value="Paid">Paid</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Overdue">Overdue</option>
+                        </select>
+                    </td>
+                </form>
+            `;
+            tableBody.appendChild(newRow);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="text">Manage Subscriptions</div>
+
+        <!-- Button to Add New Row -->
+        <div class="buttons">
+            <button class="btn add-row-btn" onclick="addSubscriptionRow()">Add Subscription</button>
+        </div>
+
+        <table class="subscription-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Package Name</th>
+                    <th>Package Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Installment</th>
+                    <th>Amount Paid</th>
+                    <th>Payment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% subscriptions.forEach(subscription => { %>
+                <tr>
+                    <form method="POST" action="/editSubscription/<%= subscription.id %>">
+                        <td><input type="text" name="student_name" value="<%= subscription.student_name %>" /></td>
+                        <td><input type="text" name="package_name" value="<%= subscription.package_name %>" /></td>
+                        <td><input type="text" name="package_type" value="<%= subscription.package_type %>" /></td>
+                        <td><input type="date" name="start_date" value="<%= subscription.start_date %>" /></td>
+                        <td><input type="date" name="end_date" value="<%= subscription.end_date %>" /></td>
+                        <td><input type="text" name="installment" value="<%= subscription.installment %>" /></td>
+                        <td><input type="text" name="amount_paid" value="<%= subscription.amount_paid %>" /></td>
+                        <td>
+                            <select name="payment_status">
+                                <option value="Paid" <%= subscription.payment_status === 'Paid' ? 'selected' : '' %>>Paid</option>
+                                <option value="Pending" <%= subscription.payment_status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                                <option value="Overdue" <%= subscription.payment_status === 'Overdue' ? 'selected' : '' %>>Overdue</option>
+                            </select>
+                        </td>
+                    </form>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

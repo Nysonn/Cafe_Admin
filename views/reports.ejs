@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Generate Reports</title>
+    <link rel="stylesheet" href="/reports.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="text">Generate Reports</div>
+
+        <!-- Report Filters -->
+        <div class="filters">
+            <label for="time-period">Select Time Period:</label>
+            <select id="time-period">
+                <option value="monthly">Monthly</option>
+                <option value="last_28_days">Last 28 Days</option>
+                <option value="last_7_days">Last 7 Days</option>
+                <option value="custom">Custom Range</option>
+            </select>
+        </div>
+
+        <!-- Overview of Key Metrics -->
+        <div class="overview">
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <p><strong>UGX</strong><span id="total-expenses">0</span></p>
+            </div>
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p><strong>UGX</strong><span id="total-revenue">0</span></p>
+            </div>
+            <div class="card">
+                <h3>Total Subscriptions</h3>
+                <p><span id="total-subscriptions">0</span></p>
+            </div>
+            <div class="card">
+                <h3>Net Income</h3>
+                <p><strong>UGX</strong><span id="net-income">0</span></p>
+            </div>
+        </div>
+
+        <!-- Graphical Analysis Section -->
+        <div class="charts">
+          <div class="chart">
+              <h3>Revenue vs Expenses</h3>
+              <canvas id="revenue-expenses-chart" class="chart-canvas"></canvas>
+          </div>
+          <div class="chart">
+              <h3>Income Trends</h3>
+              <canvas id="income-trends-chart" class="chart-canvas"></canvas>
+          </div>
+      </div> 
+
+        <!-- Buttons for Export and Print -->
+        <div class="buttons">
+            <button class="btn generate-report">Generate Report</button>
+            <button class="btn export-pdf">Export to PDF</button>
+            <button class="btn export-csv">Export to CSV</button>
+        </div>
+    </div>
+
+
+    <!-- TO CREATE SAMPLE DATA -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      // Sample Data
+      const months = ['January', 'February', 'March', 'April', 'May', 'June'];
+      const revenue = [5000, 6000, 7000, 8000, 9000, 10000];
+      const expenses = [3000, 4000, 4500, 5000, 5500, 6000];
+      const netIncome = [2000, 2000, 2500, 3000, 3500, 4000];
+  
+      // Revenue vs Expenses Chart
+      const ctx1 = document.getElementById('revenue-expenses-chart').getContext('2d');
+      new Chart(ctx1, {
+          type: 'bar',
+          data: {
+              labels: months,
+              datasets: [
+                  {
+                      label: 'Revenue',
+                      data: revenue,
+                      backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                      borderColor: 'rgba(54, 162, 235, 1)',
+                      borderWidth: 1
+                  },
+                  {
+                      label: 'Expenses',
+                      data: expenses,
+                      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                      borderColor: 'rgba(255, 99, 132, 1)',
+                      borderWidth: 1
+                  }
+              ]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+  
+      // Income Trends Chart
+      const ctx2 = document.getElementById('income-trends-chart').getContext('2d');
+      new Chart(ctx2, {
+          type: 'line',
+          data: {
+              labels: months,
+              datasets: [{
+                  label: 'Net Income',
+                  data: netIncome,
+                  fill: false,
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  tension: 0.1
+              }]
+          }
+      });
+  
+      // Expense Breakdown Chart
+      const ctx3 = document.getElementById('expense-breakdown-chart').getContext('2d');
+      const expenseCategories = ['Rent', 'Utilities', 'Salaries', 'Marketing', 'Miscellaneous'];
+      const expenseValues = [2000, 1000, 1500, 800, 700];
+  
+      new Chart(ctx3, {
+          type: 'pie',
+          data: {
+              labels: expenseCategories,
+              datasets: [{
+                  label: 'Expense Breakdown',
+                  data: expenseValues,
+                  backgroundColor: [
+                      'rgba(255, 206, 86, 0.5)',
+                      'rgba(75, 192, 192, 0.5)',
+                      'rgba(153, 102, 255, 0.5)',
+                      'rgba(255, 99, 132, 0.5)',
+                      'rgba(54, 162, 235, 0.5)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          }
+      });
+  </script>
+  
+</body>
+</html>
