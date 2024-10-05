@@ -7,19 +7,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/viewStudents.css">
     <script>
-        // Function to add a new row for student
-        function addStudentRow() {
-            const tableBody = document.querySelector('.student-table tbody');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <form method="POST" action="/addStudent">
-                    <td><input type="text" name="student_name" placeholder="Student Name" required /></td>
-                    <td><input type="text" name="student_number" placeholder="Student Number" required /></td>
-                    <td><input type="email" name="email" placeholder="Email" required /></td>
-                    <td><input type="text" name="contact_number" placeholder="Contact Number" required /></td>
-                </form>
-            `;
-            tableBody.appendChild(newRow);
+        function toggleForm() {
+            const form = document.getElementById('student-form');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
         }
     </script>
 </head>
@@ -27,31 +17,58 @@
     <div class="container">
         <div class="text">View Students</div>
 
-        <!-- Button to Add New Row -->
+        <!-- Add Student Button -->
         <div class="buttons">
-            <button class="btn add-row-btn" onclick="addStudentRow()">Add Student</button>
+            <button class="btn add-student" onclick="toggleForm()">Add Student</button>
         </div>
 
+        <!-- Form to Add Student (hidden by default) -->
+        <div id="student-form" class="student-form" style="display: none;">
+            <form action="/addStudent" method="POST">
+                <div class="form-group">
+                    <label for="name">Student Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="student_number">Student Number:</label>
+                    <input type="text" id="student_number" name="student_number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact_number">Contact Number:</label>
+                    <input type="text" id="contact_number" name="contact_number" required>
+                </div>
+
+                <button type="submit" class="btn submit-student">Submit Student</button>
+            </form>
+        </div>
+
+        <!-- Dynamic table to display students -->
         <table class="student-table">
             <thead>
                 <tr>
                     <th>Student Name</th>
                     <th>Student Number</th>
-                    <th>Email</th>
                     <th>Contact Number</th>
                 </tr>
             </thead>
             <tbody>
-                <% students.forEach(student => { %>
-                <tr>
-                    <form method="POST" action="/editStudent/<%= student.id %>">
-                        <td><input type="text" name="student_name" value="<%= student.student_name %>" required /></td>
-                        <td><input type="text" name="student_number" value="<%= student.student_number %>" required /></td>
-                        <td><input type="email" name="email" value="<%= student.email %>" required /></td>
-                        <td><input type="text" name="contact_number" value="<%= student.contact_number %>" required /></td>
-                    </form>
-                </tr>
-                <% }) %>
+                <% if (students.length > 0) { %>
+                    <% students.forEach(student => { %>
+                        <tr>
+                            <form method="POST" action="/editStudent/<%= student.id %>">
+                                <td><input type="text" name="name" value="<%= student.name %>" required /></td>
+                                <td><input type="text" name="student_number" value="<%= student.student_number %>" required /></td>
+                                <td><input type="text" name="contact_number" value="<%= student.contact_number %>" required /></td>
+                            </form>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5">No students found.</td>
+                    </tr>
+                <% } %>
             </tbody>
         </table>
     </div>

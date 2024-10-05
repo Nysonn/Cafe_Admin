@@ -54,6 +54,7 @@
             </form>
         </div>
 
+        <!-- Dynamic table to display expenses -->
         <table class="expense-table">
             <thead>
                 <tr>
@@ -66,16 +67,22 @@
                 </tr>
             </thead>
             <tbody>
-                <% expenses.forEach(expense => { %>
-                <tr>
-                    <td>UGX <%= expense.expenseAmount %></td>
-                    <td>UGX <%= expense.revenueAmount %></td>
-                    <td>UGX <%= expense.revenueAmount - expense.expenseAmount %></td> <!-- Net Income calculated -->
-                    <td><%= expense.category %></td>
-                    <td><%= expense.notes %></td>
-                    <td><%= expense.date %></td>
-                </tr>
-                <% }) %>
+                <% if (expenses.length > 0) { %>
+                    <% expenses.forEach(expense => { %>
+                        <tr>
+                            <td>UGX <%= expense.expense_amount %></td>
+                            <td>UGX <%= expense.revenue_amount %></td>
+                            <td>UGX <%= expense.net_income %></td>
+                            <td><%= expense.category %></td>
+                            <td><%= expense.notes %></td>
+                            <td><%= new Date(expense.date).toLocaleDateString() %></td> <!-- Formatting date -->
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6">No expenses found.</td>
+                    </tr>
+                <% } %>
             </tbody>
         </table>
     </div>

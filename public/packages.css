@@ -12,29 +12,33 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 20px;
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   background-color: #1b1b1b;
   padding: 40px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  text-align: center;
 }
 
 .text {
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  text-align: center;
-  text-transform: uppercase;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  color: #ffffff;
 }
 
 .buttons {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .btn {
@@ -53,75 +57,94 @@ body {
 }
 
 /* Form Styling */
-.student-form {
+.package-form {
   margin: 20px 0;
-  padding: 20px;
+  padding: 25px;
   background-color: #2b2b2b;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-   color: #ddd;
-  margin-bottom: 5px;
+  color: #ddd;
+  margin-bottom: 8px;
 }
 
 .form-group input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
   background-color: #444;
   color: #fff;
 }
 
+/* Submit Button */
+.submit-package {
+  background-color: #339933;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.submit-package:hover {
+  background-color: #267c27;
+}
+
 /* Table Styling */
-.student-table {
+.package-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.student-table th, .student-table td {
+.package-table th, .package-table td {
   border: 1px solid #444;
-  padding: 12px;
+  padding: 20px;
   text-align: left;
+  color: #c7c7c7;
 }
 
-.student-table th {
+.package-table th {
   background-color: #2b2b2b;
 }
 
-.student-table td {
+.package-table td {
   background-color: #1b1b1b;
 }
 
-.student-table tr:hover {
-  background-color: #2b2b2b;
+.package-table tr:hover {
+  background-color: #333333;
 }
 
-.student-table input{
+.package-table input {
   background-color: #2b2b2b;
   border: none;
-  color : #fff;
-  width : 100%;
+  color: #fff;
   padding : 10px;
+  padding-right : 0;
+  width : 100%;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .container {
-      padding: 20px;
+    padding: 20px;
   }
 
-  .student-table th, .student-table td {
-      padding: 8px;
+  .package-table th, .package-table td {
+    padding: 10px;
   }
 
   .form-group input {
-      padding: 6px;
+    padding: 8px;
   }
 }

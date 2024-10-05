@@ -1,4 +1,3 @@
-/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -16,24 +15,23 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 95%;
   max-width: 1000px;
   background-color: #1b1b1b;
-  padding: 40px;
+  padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .text {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 600;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;
 }
 
-/* Button Styles */
 .buttons {
   text-align: center;
   margin-bottom: 20px;
@@ -45,57 +43,85 @@ body {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #267c27;
+.subscription-form {
+  margin-bottom: 30px;
 }
 
-/* Table Styles */
+.subscription-form .form-group {
+  margin-bottom: 10px;
+}
+
+.subscription-form .form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.subscription-form .form-group input,
+.subscription-form .form-group select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
 .subscription-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  table-layout: auto; /* Ensure columns resize to fit the content */
 }
 
-.subscription-table th, .subscription-table td {
+.subscription-table th, 
+.subscription-table td {
   border: 1px solid #444;
-  padding: 12px;
-  text-align: left;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px; /* Reduced font size */
 }
 
 .subscription-table th {
-  background-color: #2b2b2b;
-  color: #ddd;
+  background-color: #333;
 }
 
 .subscription-table td {
-  background-color: #1b1b1b;
+  background-color: #222;
 }
 
-.subscription-table input, .subscription-table select {
-  width: 100%;
-  padding: 8px;
+.submit-subscription {
+  background-color: #4CAF50;
+  padding: 8px 15px;
+  color: white;
   border: none;
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* Container Responsiveness */
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .container {
-      padding: 20px;
+    padding: 10px;
   }
 
-  .subscription-table th, .subscription-table td {
-      padding: 8px;
+  .text {
+    font-size: 24px;
   }
 
-  .subscription-table input, .subscription-table select {
-      padding: 6px;
+  .subscription-table th, 
+  .subscription-table td {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .btn, .submit-subscription {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .subscription-form .form-group input,
+  .subscription-form .form-group select {
+    padding: 6px;
   }
 }

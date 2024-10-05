@@ -25,35 +25,38 @@
         <div class="overview">
             <div class="card">
                 <h3>Total Expenses</h3>
-                <p><strong>UGX</strong><span id="total-expenses">0</span></p>
+                <p><strong>UGX</strong><span id="total-expenses"><%= totalExpenses %></span></p>
             </div>
             <div class="card">
                 <h3>Total Revenue</h3>
-                <p><strong>UGX</strong><span id="total-revenue">0</span></p>
+                <p><strong>UGX</strong><span id="total-revenue"><%= totalRevenue %></span></p>
             </div>
             <div class="card">
                 <h3>Total Subscriptions</h3>
-                <p><span id="total-subscriptions">0</span></p>
+                <p><span id="total-subscriptions"><%= totalSubscriptions %></span></p>
             </div>
             <div class="card">
                 <h3>Net Income</h3>
-                <p><strong>UGX</strong><span id="net-income">0</span></p>
+                <p><strong>UGX</strong><span id="net-income"><%= netIncome %></span></p>
             </div>
         </div>
 
         <div class="buttons">
-              <a href="/viewExpenses">
+            <a href="/viewExpenses">
                 <button class="btn add-expense">View Expenses</button>
             </a>
             <a href="/manageSubscriptions">
                 <button class="btn manage-subscriptions">Manage Subscriptions</button>
             </a>
             <a href="/viewStudents">
-              <button class="btn view-students">View Students</button>
-          </a>
-          <a href="/reports">
-            <button class="btn reports">Reports</button>
-        </a>
+                <button class="btn view-students">View Students</button>
+            </a>
+            <a href="/packages">
+                <button class="btn view-students">Packages</button>
+            </a>
+            <a href="/reports">
+                <button class="btn reports">Reports</button>
+            </a>
         </div>
     </div>
 </body>
